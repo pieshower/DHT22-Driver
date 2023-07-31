@@ -13,7 +13,7 @@
 
 typedef struct
 {
-    uint8_t     pin = 5;
+    uint8_t     pin = 0;
 
     uint8_t data[5] = {0};
 
@@ -31,17 +31,14 @@ private:
 
 public:
 
-     DHT22_Driver();
-    ~DHT22_Driver();
+    void begin(int pin = 5);
 
-    void begin();
     bool  read();
-    void print();
+
+    float getTemperature();
+    float getHumidity();
 
 };
-
-
-static DHT22_Driver myDHT22;
 
 
 #endif

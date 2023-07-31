@@ -4,21 +4,10 @@
 
 
 
-DHT22_Driver::DHT22_Driver()
+
+void DHT22_Driver::begin(int pin)
 {
-    //_DHT22_.pin = 5;
-}
-
-
-DHT22_Driver::~DHT22_Driver()
-{
-
-}
-
-
-
-void DHT22_Driver::begin()
-{
+    _DHT22_.pin = pin;
     pinMode(_DHT22_.pin, INPUT_PULLUP);
     digitalWrite(_DHT22_.pin, HIGH);
 }
@@ -59,15 +48,17 @@ bool DHT22_Driver::read()
 }
 
 
-void DHT22_Driver::print()
+float DHT22_Driver::getTemperature()
 {
-    Serial.print("Temperature: ");
-    Serial.print(_DHT22_.temp);
-
-    Serial.println();
-        
-    Serial.print("Humidity: ");
-    Serial.print(_DHT22_.humid);
+    return _DHT22_.temp;
 }
+
+
+float DHT22_Driver::getHumidity()
+{
+    return _DHT22_.humid;
+}
+
+
 
 
